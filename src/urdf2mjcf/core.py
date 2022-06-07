@@ -31,3 +31,24 @@ def pass_through_mujoco(model_xml: Element) -> Element:
 
     return backloaded_model_xml
 
+
+def add_mujoco_node(urdf: Element, mujoco_node: Element = None) -> None:
+    """Add the mujoco node to a URDF object"""
+    if mujoco_node is None:
+        mujoco_node = Element("mujoco")
+
+        compiler_attrib = {
+            "strippath": "false",
+            "fusestatic": "false",
+            "discardvisual": "true",
+        }
+        compiler_node = SubElement(mujoco_node, "compiler", compiler_attrib)
+        lengthrange_node = SubElement(compiler_node, "lengthrange")
+
+        option_node = SubElement(mujoco_node, "option")
+        flag_node = SubElement(option_node, "flag")
+
+        size_node = SubElement(mujoco_node, "size")
+
+    urdf.append(mujoco_node)
+

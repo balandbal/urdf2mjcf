@@ -88,3 +88,20 @@ def resolve_ros_uris(urdf: Element, rospack: RosPack = None) -> None:
 
         mesh_node.set("filename", absolute_path)
 
+
+def populate_sensors(mjcf: Element, sensor_config: Element) -> None:
+    """Add sites and sensors to an MJCF object"""
+    for body_node in sensor_config.findall("./body"):
+        body_name = body_node.get("name", None)
+        assert (
+            body_name is not None
+        ), f"Bad sensorconfig.; body node has no name ({body_node.attrib})"
+
+        body_in_mjcf = mjcf.find(f".//body[@name='{body_name}']")
+        assert body_in_mjcf is not None, f"No body in MJCF with name '{body_name}'"
+
+        body_in_mjcf.extend(body_node.findall("./site"))
+
+    mjcf.extend(sensor_config.findall("./sensor"))
+
+

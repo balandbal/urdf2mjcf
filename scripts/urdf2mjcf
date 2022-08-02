@@ -73,8 +73,11 @@ Parse a URDF model into MJCF format""",
 
     args.urdf.close()
     args.mjcf.close()
-    args.mujoco_node.close()
-    args.sensor_config.close()
+
+    if args.mujoco_node is not None:
+        args.mujoco_node.close()
+    if args.sensor_config is not None:
+        args.sensor_config.close()
 
 
 if __name__ == "__main__":

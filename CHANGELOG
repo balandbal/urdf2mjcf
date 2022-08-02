@@ -1,17 +1,3 @@
-<a name="1.0.1"></a>
-## [1.0.1](https://github.com/balandbal/urdf2mjcf/compare/1.0.0...1.0.1) (2022-06-10)
-
-### Bug Fixes
-- align package versions ([f372c96](https://github.com/balandbal/urdf2mjcf/commit/f372c966e266153026a7253f195098edad926100))
-
-### Build
-- fix package manager in rosdep.yaml record ([2b9cd68](https://github.com/balandbal/urdf2mjcf/commit/2b9cd6813130401e7a70e81f3c3facef2bd55ce3))
-
-### Docs
-- add CHANGELOG ([3528542](https://github.com/balandbal/urdf2mjcf/commit/35285421cf86a76c84334a13d6b45f752b20e9d3))
-- fix rosdep-yaml setup instructions ([24eb9ce](https://github.com/balandbal/urdf2mjcf/commit/24eb9ce27bcbdc41ec0fb77a9ad6a106ac8c3719))
-
-
 <a name="1.0.0"></a>
 ## [1.0.0](https://github.com/balandbal/urdf2mjcf/compare/6e29734b57088a7097a285bcbe591d8ad584b7a5...1.0.0) (2022-06-09)
 

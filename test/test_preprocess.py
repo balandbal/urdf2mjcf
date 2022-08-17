@@ -1,5 +1,5 @@
 from utils import _test_dir
-from urdf2mjcf.core import abspath_from_ros_uri
+from urdf2mjcf.core import abspath_from_ros_uri, add_mujoco_node, _parse_element
 
 
 def test_resolving_ros_uris():
@@ -12,6 +12,15 @@ def test_resolving_ros_uris():
 
     for input_uri, control_uri in zip(input_uris, control_uris):
         assert abspath_from_ros_uri(input_uri) == control_uri
+
+
+def test_update_mujoco_node():
+    input_model = _test_dir() / "inputs" / "ip_model_3.urdf"
+    urdf = _parse_element(input_model)
+
+    add_mujoco_node(urdf, None)
+
+    assert len(urdf.findall(".//mujoco")) == 0
 
 
 if __name__ == "__main__":

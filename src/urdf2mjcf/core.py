@@ -37,11 +37,7 @@ def pass_through_mujoco(model_xml: Element) -> Element:
 def add_mujoco_node(urdf: Element, mujoco_node: Element = None) -> None:
     """Add the mujoco node to a URDF object"""
     if mujoco_node is None:
-        mujoco_node = (
-            Element("mujoco")
-            if len(urdf.findall("./mujoco")) < 1
-            else urdf.find("./mujoco")
-        )
+        mujoco_node = Element("mujoco")
 
         compiler_attrib = {
             "strippath": "false",

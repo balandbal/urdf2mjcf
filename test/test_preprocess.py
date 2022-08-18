@@ -1,5 +1,14 @@
+from functools import lru_cache
+from io import StringIO
+
 from utils import _test_dir
-from urdf2mjcf.core import abspath_from_ros_uri, add_mujoco_node, _parse_element
+from urdf2mjcf.core import (
+    abspath_from_ros_uri,
+    add_mujoco_node,
+    _parse_element,
+    tostring,
+    Element,
+)
 
 
 def test_resolving_ros_uris():
@@ -14,13 +23,65 @@ def test_resolving_ros_uris():
         assert abspath_from_ros_uri(input_uri) == control_uri
 
 
-def test_update_mujoco_node():
-    input_model = _test_dir() / "inputs" / "ip_model_3.urdf"
-    urdf = _parse_element(input_model)
+@lru_cache
+def _get_mjnode1():
+    with StringIO('<mujoco><compiler strippath="true" /></mujoco>') as node_1:
+        mjnode1 = _parse_element(node_1)
+    return mjnode1
 
+
+@lru_cache
+def _get_mjnode2():
+    with open(_test_dir() / "inputs" / "mujoco.xml", "r") as node_2:
+        mjnode2 = _parse_element(node_2)
+    return mjnode2
+
+
+def test_add_mujoco_node_1():
+    urdf = Element("robot")
     add_mujoco_node(urdf, None)
+    assert (
+        tostring(urdf, encoding="unicode")
+        == '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
+    )
 
-    assert len(urdf.findall(".//mujoco")) == 0
+
+def test_add_mujoco_node_2():
+    urdf = Element("robot")
+    add_mujoco_node(urdf, _get_mjnode1())
+    assert (
+        tostring(urdf, encoding="unicode")
+        == '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
+    )
+
+
+def test_add_mujoco_node_3():
+    urdf = Element("robot")
+    add_mujoco_node(urdf, _get_mjnode2())
+    assert (
+        tostring(urdf, encoding="unicode")
+        == '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
+    )
+
+
+def test_update_mujoco_node_1():
+    urdf = Element("robot")
+    add_mujoco_node(urdf, _get_mjnode1())
+    add_mujoco_node(urdf, _get_mjnode2())
+    assert (
+        tostring(urdf, encoding="unicode")
+        == '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
+    )
+
+
+def test_update_mujoco_node_2():
+    urdf = Element("robot")
+    add_mujoco_node(urdf, _get_mjnode2())
+    add_mujoco_node(urdf, _get_mjnode1())
+    assert (
+        tostring(urdf, encoding="unicode")
+        == '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
+    )
 
 
 if __name__ == "__main__":

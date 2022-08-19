@@ -1,11 +1,6 @@
-#! /usr/bin/env python
+#! python3
 from sys import stdin, stdout
-from argparse import (
-    ArgumentParser,
-    ArgumentDefaultsHelpFormatter,
-    RawDescriptionHelpFormatter,
-    FileType,
-)
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter, FileType
 from pathlib import Path
 
 import urdf2mjcf.core as u2m
@@ -54,7 +49,10 @@ Parse a URDF model into MJCF format""",
         help="the XML file defining the global MuJoCo configuration",
     )
     parser.add_argument(
-        "-l", dest="license", action="store_true", help="print license information"
+        "-l",
+        dest="license",
+        action="store_true",
+        help="print license information"
     )
 
     args = parser.parse_args()

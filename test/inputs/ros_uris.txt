@@ -1,2 +1,0 @@
-package://franka_description/meshes/collision/link0.stl
-package://franka_description/meshes/visual/link0.dae

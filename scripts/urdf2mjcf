@@ -81,6 +81,9 @@ Parse a URDF model into MJCF format""",
     if args.sensor_config is not None:
         args.sensor_config.close()
 
+    if args.mjcf != stdout:
+        stdout.write(args.mjcf.name)
+
 
 if __name__ == "__main__":
     urdf2mjcf()

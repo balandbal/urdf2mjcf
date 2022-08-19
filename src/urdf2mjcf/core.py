@@ -36,23 +36,53 @@ def pass_through_mujoco(model_xml: Element) -> Element:
 
 def add_mujoco_node(urdf: Element, mujoco_node: Element = None) -> None:
     """Add the mujoco node to a URDF object"""
-    if mujoco_node is None:
-        mujoco_node = Element("mujoco")
+    mujoco_node = Element("mujoco") if mujoco_node is None else mujoco_node
+    present_mujoco_node = urdf.find("./mujoco")
+    if present_mujoco_node is None:
+        present_mujoco_node = Element("mujoco")
+    else:
+        urdf.remove(present_mujoco_node)
 
-        compiler_attrib = {
-            "strippath": "false",
-            "fusestatic": "false",
-            "discardvisual": "true",
-        }
-        compiler_node = SubElement(mujoco_node, "compiler", compiler_attrib)
-        lengthrange_node = SubElement(compiler_node, "lengthrange")
+    compiler_attrib = {
+        "strippath": "false",
+        "fusestatic": "false",
+        "discardvisual": "true",
+    }
+    lengthrange_attrib = {}
+    option_attrib = {}
+    flag_attrib = {}
+    size_attrib = {}
 
-        option_node = SubElement(mujoco_node, "option")
-        flag_node = SubElement(option_node, "flag")
+    attribs = [
+        compiler_attrib,
+        lengthrange_attrib,
+        option_attrib,
+        flag_attrib,
+        size_attrib,
+    ]
+    mujoco_node_scheme = [
+        "./compiler",
+        "./compiler/lengthrange",
+        "./option",
+        "./option/flag",
+        "./size",
+    ]
 
-        size_node = SubElement(mujoco_node, "size")
+    for node_attrib, xpath in zip(attribs, mujoco_node_scheme):
+        for node in present_mujoco_node.findall(xpath):
+            node_attrib.update(node.attrib)
+        for node in mujoco_node.findall(xpath):
+            node_attrib.update(node.attrib)
 
-    urdf.append(mujoco_node)
+    new_mujoco_node = SubElement(urdf, "mujoco")
+
+    compiler_node = SubElement(new_mujoco_node, "compiler", compiler_attrib)
+    lengthrange_node = SubElement(compiler_node, "lengthrange", lengthrange_attrib)
+
+    option_node = SubElement(new_mujoco_node, "option", option_attrib)
+    flag_node = SubElement(option_node, "flag", flag_attrib)
+
+    size_node = SubElement(new_mujoco_node, "size", size_attrib)
 
 
 def abspath_from_ros_uri(uri: str, rospack: RosPack = None) -> str:

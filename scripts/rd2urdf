@@ -1,0 +1,56 @@
+#! /usr/bin/env python
+from sys import stdout
+from argparse import (
+    ArgumentParser,
+    ArgumentDefaultsHelpFormatter,
+    RawDescriptionHelpFormatter,
+    FileType,
+)
+from pathlib import Path
+
+import urdf2mjcf.core as u2m
+import urdf2mjcf.urdf_from_robot_description as rd2u
+
+
+class ArgFormatter(ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter):
+    pass
+
+
+def rd2urdf():
+    """CLI for robot_description-2-URDF conversion"""
+    parser = ArgumentParser(
+        prog="rd2urdf",
+        description="""Copyright (c) 2022 Fraunhofer IPA; use option '-l' to print license.
+
+TODO: description""",
+        formatter_class=ArgFormatter,
+    )
+
+    parser.add_argument(
+        "urdf",
+        nargs="?",
+        type=FileType("w"),
+        default=stdout,
+        help="the output URDF file",
+    )
+    parser.add_argument(
+        "-l", dest="license", action="store_true", help="print license information"
+    )
+
+    args = parser.parse_args()
+
+    if args.license:
+        license_path = Path(__file__).resolve().parents[1] / "LICENSE"
+        with open(license_path, "r") as license_file:
+            print(license_file.read())
+        exit()
+
+    result = rd2u.urdf_from_robot_description(filter_xpaths=(".//transmission",))
+
+    args.urdf.write(u2m.tostring(result, encoding="unicode"))
+
+    args.urdf.close()
+
+
+if __name__ == "__main__":
+    rd2urdf()

@@ -8,7 +8,7 @@ Requirements
 
 1. The tool utilizes the [MuJoCo engine](https://github.com/deepmind/mujoco/releases) during conversion, so make sure it is installed on your machine.
 
-1. Tho tool interfaces the MuJoCo engine through its official [python bindings](https://pypi.org/project/mujoco/).
+1. The tool interfaces the MuJoCo engine through its official [python bindings](https://pypi.org/project/mujoco/).
    
    - You can install the bindings via
      

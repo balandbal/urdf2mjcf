@@ -7,6 +7,9 @@ catkin_python_setup()
 
 catkin_package()
 
-catkin_install_python(PROGRAMS scripts/urdf2mjcf
+catkin_install_python(
+  PROGRAMS
+  scripts/urdf2mjcf
+  scripts/rd2urdf
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

@@ -36,3 +36,13 @@ Requirements
      #pip
      mujoco
      ```
+
+Running things
+---
+
+The package comes with command-line applications; use their help arguments for usage information.
+
+```shell
+urdf2mjcf --help
+rd2mjcf --help
+```

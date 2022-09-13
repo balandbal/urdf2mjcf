@@ -127,7 +127,7 @@ def populate_sensors(mjcf: Element, sensor_config: Element) -> None:
         body_name = body_node.get("name", None)
         assert (
             body_name is not None
-        ), f"Bad sensorconfig.; body node has no name ({body_node.attrib})"
+        ), f"Bad sensor configuration; body node has no name ({body_node.attrib})"
 
         body_in_mjcf = mjcf.find(f".//body[@name='{body_name}']")
         assert body_in_mjcf is not None, f"No body in MJCF with name '{body_name}'"

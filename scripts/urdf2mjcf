@@ -1,77 +1,21 @@
 #! /usr/bin/env python
-from sys import stdin, stdout
-from argparse import (
-    ArgumentParser,
-    ArgumentDefaultsHelpFormatter,
-    RawDescriptionHelpFormatter,
-    FileType,
-)
+from sys import stdout
 from pathlib import Path
 
-import urdf2mjcf.core as u2m
+from urdf2mjcf import __version__
+from urdf2mjcf.cli import cli
+from urdf2mjcf.core import _parse_element as parse_stream, tostring, full_pipeline
 
 
-class ArgFormatter(ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter):
-    pass
-
-
-def urdf2mjcf():
-    """CLI for URDF-2-MJCF conversion"""
-    parser = ArgumentParser(
-        prog="urdf2mjcf",
-        description="""Copyright (c) 2022 Fraunhofer IPA; use option '-l' to print license.
-
-Parse a URDF model into MJCF format""",
-        formatter_class=ArgFormatter,
+def app(args):
+    """App for URDF-2-MJCF conversion"""
+    result = full_pipeline(
+        parse_stream(args.urdf),
+        sensor_config=parse_stream(args.sensor_config),
+        mujoco_node=parse_stream(args.mujoco_node),
     )
 
-    parser.add_argument(
-        "urdf",
-        nargs="?",
-        type=FileType("r"),
-        default=stdin,
-        help="the URDF file to convert",
-    )
-    parser.add_argument(
-        "mjcf",
-        nargs="?",
-        type=FileType("w"),
-        default=stdout,
-        help="the converted MJCF file",
-    )
-    parser.add_argument(
-        "-s",
-        dest="sensor_config",
-        type=FileType("r"),
-        default=None,
-        help="the XML file of the sensor configuration",
-    )
-    parser.add_argument(
-        "-m",
-        dest="mujoco_node",
-        type=FileType("r"),
-        default=None,
-        help="the XML file defining the global MuJoCo configuration",
-    )
-    parser.add_argument(
-        "-l", dest="license", action="store_true", help="print license information"
-    )
-
-    args = parser.parse_args()
-
-    if args.license:
-        license_path = Path(__file__).resolve().parents[1] / "LICENSE"
-        with open(license_path, "r") as license_file:
-            print(license_file.read())
-        exit()
-
-    result = u2m.full_pipeline(
-        u2m._parse_element(args.urdf),
-        sensor_config=u2m._parse_element(args.sensor_config),
-        mujoco_node=u2m._parse_element(args.mujoco_node),
-    )
-
-    args.mjcf.write(u2m.tostring(result, encoding="unicode"))
+    args.mjcf.write(tostring(result, encoding="unicode"))
 
     args.urdf.close()
     args.mjcf.close()
@@ -86,4 +30,19 @@ Parse a URDF model into MJCF format""",
 
 
 if __name__ == "__main__":
-    urdf2mjcf()
+    parser = cli()
+
+    parser.add_argument("--version", action="version", version=__version__)
+    parser.add_argument(
+        "-l", dest="license", action="store_true", help="print license information"
+    )
+
+    args = parser.parse_args()
+
+    if args.license:
+        license_path = Path(__file__).resolve().parents[1] / "LICENSE"
+        with open(license_path, "r") as license_file:
+            print(license_file.read())
+        exit(0)
+
+    app(args)

@@ -3,7 +3,12 @@
 from time import time
 import rospy
 from sys import stdin, stdout
-from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter, FileType
+from argparse import (
+    ArgumentParser,
+    ArgumentDefaultsHelpFormatter,
+    RawDescriptionHelpFormatter,
+    FileType,
+)
 from pathlib import Path
 
 from defusedxml.ElementTree import fromstring
@@ -14,18 +19,19 @@ import urdf2mjcf.core as u2m
 class ArgFormatter(ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter):
     pass
 
-if __name__ == "__main__":
-    rospy.init_node('urdf2mjcf')
 
-    urdf_path = rospy.get_param('urdf_source', 'robot_description')
-    xml_destination = rospy.get_param('xml_destination', 'mujoco_xml')
+if __name__ == "__main__":
+    rospy.init_node("urdf2mjcf")
+
+    urdf_path = rospy.get_param("urdf_source", "robot_description")
+    xml_destination = rospy.get_param("xml_destination", "mujoco_xml")
 
     while not rospy.has_param(urdf_path) and not rospy.is_shutdown():
         time.sleep(0.1)
 
     urdf = rospy.get_param(urdf_path)
-    sensor_config = rospy.get_param('sensor_config', None)
-    mujoco_node = rospy.get_param('mujoco_node', None)
+    sensor_config = rospy.get_param("sensor_config", None)
+    mujoco_node = rospy.get_param("mujoco_node", None)
 
     element = fromstring(urdf)
 

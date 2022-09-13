@@ -2,22 +2,10 @@
 
 from time import time
 import rospy
-from sys import stdin, stdout
-from argparse import (
-    ArgumentParser,
-    ArgumentDefaultsHelpFormatter,
-    RawDescriptionHelpFormatter,
-    FileType,
-)
-from pathlib import Path
 
 from defusedxml.ElementTree import fromstring
 
 import urdf2mjcf.core as u2m
-
-
-class ArgFormatter(ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter):
-    pass
 
 
 if __name__ == "__main__":

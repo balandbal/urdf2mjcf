@@ -11,5 +11,6 @@ catkin_install_python(
   PROGRAMS
   scripts/urdf2mjcf
   scripts/rd2urdf
+  scripts/urdf2mjcf_ros
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

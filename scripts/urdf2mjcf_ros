@@ -5,7 +5,7 @@ import rospy
 
 from defusedxml.ElementTree import fromstring
 
-import urdf2mjcf.core as u2m
+from urdf2mjcf.core import _parse_element as parse_stream, tostring, full_pipeline
 
 
 if __name__ == "__main__":
@@ -23,10 +23,10 @@ if __name__ == "__main__":
 
     element = fromstring(urdf)
 
-    result = u2m.full_pipeline(
+    result = full_pipeline(
         fromstring(urdf),
-        sensor_config=u2m._parse_element(sensor_config),
-        mujoco_node=u2m._parse_element(mujoco_node),
+        sensor_config=parse_stream(sensor_config),
+        mujoco_node=parse_stream(mujoco_node),
     )
 
-    rospy.set_param(xml_destination, u2m.tostring(result, encoding="unicode"))
+    rospy.set_param(xml_destination, tostring(result, encoding="unicode"))

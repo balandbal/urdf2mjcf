@@ -4,7 +4,7 @@
 
 from xml.etree.ElementTree import Element, tostring, SubElement
 from pathlib import Path
-from typing import Union, IO, AnyStr
+from typing import Union, IO, AnyStr, Dict
 from os import fdopen, unlink
 from tempfile import mkstemp
 from urllib.parse import urlparse
@@ -48,10 +48,10 @@ def add_mujoco_node(urdf: Element, mujoco_node: Element = None) -> None:
         "fusestatic": "false",
         "discardvisual": "true",
     }
-    lengthrange_attrib = {}
-    option_attrib = {}
-    flag_attrib = {}
-    size_attrib = {}
+    lengthrange_attrib: Dict[str, str] = {}
+    option_attrib: Dict[str, str] = {}
+    flag_attrib: Dict[str, str] = {}
+    size_attrib: Dict[str, str] = {}
 
     attribs = [
         compiler_attrib,

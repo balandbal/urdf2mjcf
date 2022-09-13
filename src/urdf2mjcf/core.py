@@ -102,7 +102,7 @@ def abspath_from_ros_uri(uri: str, rospack: RosPack = None) -> str:
 
     assert (
         package / relative_path
-    ).is_absolute(), f"Resolved path is not abosulte: {package / relative_path}"
+    ).is_absolute(), f"Resolved path is not absolute: {package / relative_path}"
 
     return str(package / relative_path)
 

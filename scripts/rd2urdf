@@ -2,18 +2,13 @@
 from sys import stdout
 from argparse import (
     ArgumentParser,
-    ArgumentDefaultsHelpFormatter,
-    RawDescriptionHelpFormatter,
     FileType,
 )
 from pathlib import Path
 
-import urdf2mjcf.core as u2m
-import urdf2mjcf.urdf_from_robot_description as rd2u
-
-
-class ArgFormatter(ArgumentDefaultsHelpFormatter, RawDescriptionHelpFormatter):
-    pass
+from urdf2mjcf.core import tostring
+from urdf2mjcf.cli import ArgFormatter
+from urdf2mjcf.urdf_from_robot_description import urdf_from_robot_description
 
 
 def rd2urdf():
@@ -45,9 +40,9 @@ TODO: description""",
             print(license_file.read())
         exit()
 
-    result = rd2u.urdf_from_robot_description(filter_xpaths=(".//transmission",))
+    result = urdf_from_robot_description(filter_xpaths=(".//transmission",))
 
-    args.urdf.write(u2m.tostring(result, encoding="unicode"))
+    args.urdf.write(tostring(result, encoding="unicode"))
 
     args.urdf.close()
 

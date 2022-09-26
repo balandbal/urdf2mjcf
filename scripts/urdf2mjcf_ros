@@ -39,8 +39,6 @@ if __name__ == "__main__":
     sensor_config = get_param("sensor_config", None)
     mujoco_node = get_param("mujoco_node", None)
 
-    element = fromstring(urdf)
-
     result = full_pipeline(
         urdf=fromstring(urdf),
         sensor_config=parse_xml_string(sensor_config),

@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-from time import time
+from time import sleep
 import rospy
 
 from defusedxml.ElementTree import fromstring
@@ -13,8 +13,8 @@ if __name__ == "__main__":
     urdf_path = rospy.get_param("urdf_source", "robot_description")
     xml_destination = rospy.get_param("xml_destination", "mujoco_xml")
 
-    while not rospy.has_param(urdf_path) and not rospy.is_shutdown():
-        time.sleep(0.1)
+        while not rospy.has_param(urdf_path) and not rospy.is_shutdown():
+            sleep(0.1)
 
     urdf = rospy.get_param(urdf_path)
     sensor_config = rospy.get_param("sensor_config", None)

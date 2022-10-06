@@ -1,11 +1,20 @@
 <?xml version="1.0"?>
 <launch>
 
-    <!-- load urdf into rosparam path 'robot_description' -->
+    <!-- load main urdf into rosparam path 'robot_description' -->
+
+    <!-- load additional urdf into rosparam path 'robot_description2' -->
+    <!-- load sensor configuration of additional urdf into rosparam path 'sensorcfg' -->
 
     <node name="urdf2mjcf_converter" pkg="urdf2mjcf" type="urdf2mjcf_ros">
-        <param name="urdf_source" value='robot_description' />
-        <param name="xml_destination" value='mujoco_xml' />
+        <rosparam>
+            urdf_source:
+                urdf: "robot_description"
+            urdf_includes:
+                - urdf: "robot_description2"
+                  sensor_config: "sensorcfg"
+            xml_destination: "mujoco_xml"
+        </rosparam>
     </node>
 
     <!-- start mujoco_ros node which expects rosparam path 'mujoco_xml' to be set -->

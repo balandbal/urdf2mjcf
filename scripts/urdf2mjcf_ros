@@ -11,7 +11,7 @@ from urdf2mjcf.core import tostring, full_pipeline
 T = TypeVar("T")
 
 
-def get_param(param_name: str, default: T = None) -> Union[T, None]:
+def get_param(param_name: str, default: T) -> T:
     closest_param_name = rospy.search_param(param_name)
     if closest_param_name is None:
         return default

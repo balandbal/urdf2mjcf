@@ -32,6 +32,8 @@ if __name__ == "__main__":
 
     urdf_path: str = get_param("urdf_source", "robot_description")  # type: ignore
     xml_destination = get_param("xml_destination", "mujoco_xml")
+    default_ground: str = get_param("add_ground", "false")  # type: ignore
+    default_lighting: str = get_param("add_lighting", "false")  # type: ignore
 
     while not rospy.has_param(urdf_path) and not rospy.is_shutdown():
         sleep(0.1)
@@ -44,6 +46,8 @@ if __name__ == "__main__":
         urdf=fromstring(urdf),
         sensor_config=parse_xml_string(sensor_config),
         mujoco_node=parse_xml_string(mujoco_node),
+        default_ground=True if default_ground.lower() == "true" else False,
+        default_lighting=True if default_lighting.lower() == "true" else False,
     )
 
     rospy.set_param(xml_destination, tostring(result, encoding="unicode"))

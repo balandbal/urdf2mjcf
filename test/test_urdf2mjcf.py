@@ -1,4 +1,5 @@
-from urdf2mjcf.core import _parse_element, tostring, full_pipeline as urdf_to_mjcf
+from urdf2mjcf.core import _parse_element, tostring
+from urdf2mjcf.app import full_pipeline as urdf_to_mjcf
 from utils import _test_dir
 
 

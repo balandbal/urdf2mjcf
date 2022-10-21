@@ -6,7 +6,8 @@ from typing import TypeVar, Union
 from xml.etree.ElementTree import Element
 from defusedxml.ElementTree import fromstring
 
-from urdf2mjcf.core import tostring, full_pipeline
+from urdf2mjcf.app import full_pipeline
+from urdf2mjcf.core import tostring
 
 T = TypeVar("T")
 

@@ -4,7 +4,8 @@ from pathlib import Path
 
 from urdf2mjcf import __version__
 from urdf2mjcf.cli import cli
-from urdf2mjcf.core import _parse_element as parse_stream, tostring, full_pipeline
+from urdf2mjcf.app import full_pipeline
+from urdf2mjcf.core import _parse_element as parse_stream, tostring
 
 
 def app(args):

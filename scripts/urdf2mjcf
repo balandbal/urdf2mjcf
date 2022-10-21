@@ -14,6 +14,8 @@ def app(args):
         parse_stream(args.urdf),
         sensor_config=parse_stream(args.sensor_config),
         mujoco_node=parse_stream(args.mujoco_node),
+        default_ground=args.default_ground,
+        default_lighting=args.default_lighting,
     )
 
     args.mjcf.write(tostring(result, encoding="unicode"))

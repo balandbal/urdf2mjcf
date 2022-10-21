@@ -4,8 +4,8 @@
     <!-- load urdf into rosparam path 'robot_description' -->
 
     <node name="urdf2mjcf_converter" pkg="urdf2mjcf" type="urdf2mjcf_ros">
-        <param name="urdf_source" value='robot_description' />
-        <param name="xml_destination" value='mujoco_xml' />
+        <param name="urdf_source" value="robot_description" />
+        <param name="xml_destination" value="mujoco_xml" />
     </node>
 
     <!-- start mujoco_ros node which expects rosparam path 'mujoco_xml' to be set -->

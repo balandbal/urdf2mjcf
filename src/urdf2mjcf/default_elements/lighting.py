@@ -11,7 +11,7 @@ DEFAULT_LIGHT = {
 """
 
 
-def add_lighting(mjcf: Element, light_attrib: Dict[str, str]) -> None:
+def add_lighting(mjcf: Element, light_attrib: Dict[str, str] = None) -> None:
     """_summary_
 
     Parameters

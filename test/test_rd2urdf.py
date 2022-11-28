@@ -1,7 +1,13 @@
-import rospy
+import sys
+from pathlib import Path
 
+import rospy
 from urdf2mjcf.core import tostring
 from urdf2mjcf.urdf_from_robot_description import urdf_from_robot_description
+
+_test_dir = Path(__file__).resolve().parent
+sys.path.append(str(_test_dir))
+
 from test_urdf2mjcf import _urdf
 
 

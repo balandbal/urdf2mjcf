@@ -34,7 +34,9 @@ def test_urdf2mjcf_mjnode():
     _remove_assets(control_object)
     control_string = tostring(control_object, encoding="unicode")
 
-    assert result_string == control_string
+    assert (
+        result_string == control_string
+    ), f"\n output:\n  '{result_string}'\n control:\n  '{control_string}'"
 
 
 def test_urdf2mjcf_sensored():
@@ -47,4 +49,6 @@ def test_urdf2mjcf_sensored():
     _remove_assets(control_object)
     control_string = tostring(control_object, encoding="unicode")
 
-    assert result_string == control_string
+    assert (
+        result_string == control_string
+    ), f"\n output:\n  '{result_string}'\n control:\n  '{control_string}'"

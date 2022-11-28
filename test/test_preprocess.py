@@ -42,48 +42,43 @@ def _get_mjnode2():
 def test_add_mujoco_node_1():
     urdf = Element("robot")
     add_mujoco_node(urdf, None)
-    assert (
-        tostring(urdf, encoding="unicode")
-        == '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
-    )
+    output = tostring(urdf, encoding="unicode")
+    control = '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
+    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
 
 
 def test_add_mujoco_node_2():
     urdf = Element("robot")
     add_mujoco_node(urdf, _get_mjnode1())
-    assert (
-        tostring(urdf, encoding="unicode")
-        == '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
-    )
+    output = tostring(urdf, encoding="unicode")
+    control = '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
+    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
 
 
 def test_add_mujoco_node_3():
     urdf = Element("robot")
     add_mujoco_node(urdf, _get_mjnode2())
-    assert (
-        tostring(urdf, encoding="unicode")
-        == '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
-    )
+    output = tostring(urdf, encoding="unicode")
+    control = '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
+    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
 
 
 def test_update_mujoco_node_1():
     urdf = Element("robot")
     add_mujoco_node(urdf, _get_mjnode1())
     add_mujoco_node(urdf, _get_mjnode2())
-    assert (
-        tostring(urdf, encoding="unicode")
-        == '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
-    )
+    output = tostring(urdf, encoding="unicode")
+    control = '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
+    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
 
 
 def test_update_mujoco_node_2():
     urdf = Element("robot")
     add_mujoco_node(urdf, _get_mjnode2())
     add_mujoco_node(urdf, _get_mjnode1())
-    assert (
-        tostring(urdf, encoding="unicode")
-        == '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
-    )
+    output = tostring(urdf, encoding="unicode")
+    control = '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
+    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
 
 
 if __name__ == "__main__":

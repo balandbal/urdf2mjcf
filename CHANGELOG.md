@@ -3,7 +3,6 @@
 ### Bug Fixes
 
 - **default_lighting:** make attributes optional ([30f55fe](https://github.com/balandbal/urdf2mjcf/commit/30f55fe4accb16ab1a713cdc26ddce3666dfc611))
-- **default_lighting:** make attributes optional ([aab5ae3](https://github.com/balandbal/urdf2mjcf/commit/aab5ae3e7d48983661d4a21fdc00fde84d625ff8))
 
 ### Build
 

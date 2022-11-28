@@ -16,15 +16,13 @@ sys.path.append(str(_test_dir))
 
 
 def test_resolving_ros_uris():
-
-    with open(_test_dir / "inputs" / "ros_uris.txt", "r") as input_file:
-        input_uris = [uri.rstrip() for uri in input_file]
-
-    with open(_test_dir / "outputs" / "resolved_ros_uris.txt", "r") as output_file:
-        control_uris = [uri.rstrip() for uri in output_file]
-
-    for input_uri, control_uri in zip(input_uris, control_uris):
-        assert abspath_from_ros_uri(input_uri) == control_uri
+    _package_dir = _test_dir.parent
+    _package_name = _package_dir.stem
+    for path in (_test_dir / "inputs" / "meshes").glob("**/*.*"):
+        input = f"package://{_package_name}/{path.relative_to(_package_dir)}"
+        output = abspath_from_ros_uri(input)
+        control = str(path.resolve())
+        assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
 
 
 @lru_cache

@@ -1,2 +1,0 @@
-/opt/ros/noetic/share/franka_description/meshes/collision/link0.stl
-/opt/ros/noetic/share/franka_description/meshes/visual/link0.dae

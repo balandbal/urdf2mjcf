@@ -3,6 +3,7 @@
 ### Bug Fixes
 
 - **default_lighting:** make attributes optional ([30f55fe](https://github.com/balandbal/urdf2mjcf/commit/30f55fe4accb16ab1a713cdc26ddce3666dfc611))
+- **default_lighting:** make attributes optional ([aab5ae3](https://github.com/balandbal/urdf2mjcf/commit/aab5ae3e7d48983661d4a21fdc00fde84d625ff8))
 
 ### Build
 
@@ -18,18 +19,15 @@
 
 ### Docs
 
-- **changelog:** add template and generation info ([be4e57d](https://github.com/balandbal/urdf2mjcf/commit/be4e57d5538f18f0c0498a2a9cc38e0387178d49))
-
-### Features
-
-- **rosnode:** expose all of the urdf2mjcf args ([e8236df](https://github.com/balandbal/urdf2mjcf/commit/e8236dfdf7548c668023df731fc0d0e8207d1caa))
-- **rosnode:** make get_param default required ([b92d677](https://github.com/balandbal/urdf2mjcf/commit/b92d677ceb3260bf94542a67ebe615bfeb222609))
+- **changelog:** add template and generation info ([0085b0e](https://github.com/balandbal/urdf2mjcf/commit/0085b0e89cd6742d67d6aa9c7fa8f2222bbcefce))
 
 ### Features
 
 - **app:** integrate default ground and lighting ([ce78d85](https://github.com/balandbal/urdf2mjcf/commit/ce78d85a9c6acc310ece3ab98e1fe3c8dcf2e7b9))
 - **cli:** expose default ground and lighting ([6d420e5](https://github.com/balandbal/urdf2mjcf/commit/6d420e59e70ded66a1bdae6018ffd767042e7374))
+- **rosnode:** expose all of the urdf2mjcf args ([51ccaff](https://github.com/balandbal/urdf2mjcf/commit/51ccaff2f418e68322795b77058e6e8b2dc216e5))
 - **rosnode:** expose default ground and lighting ([626c950](https://github.com/balandbal/urdf2mjcf/commit/626c950acf2c7fb8e34693e396f6887254f2a419))
+- **rosnode:** make get_param default required ([5ec0f17](https://github.com/balandbal/urdf2mjcf/commit/5ec0f1747bceaafa427cf86074f357b56f5dbf8d))
 - add postprocess function to add ground plane ([32cc9a0](https://github.com/balandbal/urdf2mjcf/commit/32cc9a0b777dfd25d567d1b2c841b4932239b483))
 - add postprocess function to add lighting ([45b9801](https://github.com/balandbal/urdf2mjcf/commit/45b98012ab298b7e3c5e33abe2e1dd44ab84e1ca))
 

@@ -53,4 +53,16 @@ Parse a URDF model into MJCF format""",
         default=None,
         help="the XML file defining the global MuJoCo configuration",
     )
+    parser.add_argument(
+        "--ground",
+        dest="default_ground",
+        action="store_true",
+        help="whether to add the default ground plane to the MuJoCo model",
+    )
+    parser.add_argument(
+        "--lighting",
+        dest="default_lighting",
+        action="store_true",
+        help="whether to add the default lighting to the MuJoCo model",
+    )
     return parser

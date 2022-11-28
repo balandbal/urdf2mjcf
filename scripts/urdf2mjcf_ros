@@ -6,7 +6,8 @@ from typing import TypeVar, Union, Dict, Iterable, Optional
 from xml.etree.ElementTree import Element
 from defusedxml.ElementTree import fromstring
 
-from urdf2mjcf.core import tostring, full_pipeline
+from urdf2mjcf.app import full_pipeline
+from urdf2mjcf.core import tostring
 
 T = TypeVar("T")
 
@@ -41,12 +42,18 @@ if __name__ == "__main__":
     )
     urdf_includes: Optional[Iterable[Dict[str, str]]] = get_param("urdf_includes", None)
     xml_destination = get_param("xml_destination", "mujoco_xml")
+    default_ground: str = get_param("add_ground", "false")  # type: ignore
+    default_lighting: str = get_param("add_lighting", "false")  # type: ignore
 
     while not rospy.has_param(urdf_source["urdf"]) and not rospy.is_shutdown():
         rospy.logerr_once(f"Polling for URDF at{urdf_source['urdf']}...")
         sleep(0.1)
 
-    result = full_pipeline(**to_converter_kwargs(urdf_source))
+    result = full_pipeline(
+        **to_converter_kwargs(urdf_source),
+        default_ground=True if default_ground.lower() == "true" else False,
+        default_lighting=True if default_lighting.lower() == "true" else False,
+    )
 
     if urdf_includes is not None:
         while (

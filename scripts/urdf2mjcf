@@ -4,7 +4,8 @@ from pathlib import Path
 
 from urdf2mjcf import __version__
 from urdf2mjcf.cli import cli
-from urdf2mjcf.core import _parse_element as parse_stream, tostring, full_pipeline
+from urdf2mjcf.app import full_pipeline
+from urdf2mjcf.core import _parse_element as parse_stream, tostring
 
 
 def app(args):
@@ -13,6 +14,8 @@ def app(args):
         parse_stream(args.urdf),
         sensor_config=parse_stream(args.sensor_config),
         mujoco_node=parse_stream(args.mujoco_node),
+        default_ground=args.default_ground,
+        default_lighting=args.default_lighting,
     )
 
     args.mjcf.write(tostring(result, encoding="unicode"))

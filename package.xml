@@ -18,6 +18,4 @@
   <depend>python3-defusedxml</depend>
   <depend>python3-mujoco</depend>
 
-  <test_depend>python3-pytest</test_depend>
-
 </package>

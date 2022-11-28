@@ -1,8 +1,12 @@
-## Upcoming 1.2.2 (2022-11-28)<a name="1.2.2"></a>
+## Upcoming 1.2.2<a name="1.2.2"></a> (2022-11-28)
 
 ### Build
 
 - remove irrelevant pytest dependency ([75ba99a](https://github.com/balandbal/urdf2mjcf/commit/75ba99abc46e7fa4329be1d4273a11702fe0de1e))
+
+### Docs
+
+- **changelog:** add template and generation info ([0085b0e](https://github.com/balandbal/urdf2mjcf/commit/0085b0e89cd6742d67d6aa9c7fa8f2222bbcefce))
 
 ### Tests
 

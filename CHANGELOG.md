@@ -1,4 +1,4 @@
-## Upcoming 1.2.2<a name="1.2.2"></a> (2022-11-28)
+## Upcoming 2.0.0<a name="2.0.0"></a> (2022-11-28)
 
 ### Build
 
@@ -6,7 +6,12 @@
 
 ### Docs
 
-- **changelog:** add template and generation info ([0085b0e](https://github.com/balandbal/urdf2mjcf/commit/0085b0e89cd6742d67d6aa9c7fa8f2222bbcefce))
+- **changelog:** add template and generation info ([be4e57d](https://github.com/balandbal/urdf2mjcf/commit/be4e57d5538f18f0c0498a2a9cc38e0387178d49))
+
+### Features
+
+- **rosnode:** expose all of the urdf2mjcf args ([e8236df](https://github.com/balandbal/urdf2mjcf/commit/e8236dfdf7548c668023df731fc0d0e8207d1caa))
+- **rosnode:** make get_param default required ([b92d677](https://github.com/balandbal/urdf2mjcf/commit/b92d677ceb3260bf94542a67ebe615bfeb222609))
 
 ### Tests
 

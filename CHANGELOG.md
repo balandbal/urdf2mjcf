@@ -1,7 +1,10 @@
-<a name="2.0.4"></a>
+<a name="Unreleased"></a>
+## Unreleased ([compare](https://github.com/balandbal/urdf2mjcf/compare/2.0.4...HEAD)) (2023-11-23)
 
-## [2.0.4](https://github.com/balandbal/urdf2mjcf/compare/2.0.3...2.0.4) (2023-11-23)
+### Features
 
-### Tests
+- **rd2urdf:** remove application ([8d8b8b8](https://github.com/balandbal/urdf2mjcf/commit/8d8b8b82d13b693a19aee362821c951722af6ab8))
 
-- update tests for MuJoCo 3.0 ([93af0f4](https://github.com/balandbal/urdf2mjcf/commit/93af0f4d399c42c59a5f86eb9a45a1258248311a))
+### Chore
+
+- adjust logging of urdf polling ([6a2653b](https://github.com/balandbal/urdf2mjcf/commit/6a2653b77c03d15b4b1c2376ea7bdfd905a412eb))

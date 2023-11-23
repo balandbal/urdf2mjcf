@@ -1,5 +1,5 @@
 <mujoco model="panda">
-  <compiler angle="radian" autolimits="true"/>
+  <compiler angle="radian" />
   <statistic meansize="0.171728" extent="1.3056" center="-0.00445893 0.0150828 0.520032" />
   <asset>
     <mesh name="link0" file="/opt/ros/noetic/share/franka_description/meshes/collision/link0.stl" />

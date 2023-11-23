@@ -1,5 +1,5 @@
 <mujoco model="MuJoCo Model">
-  <compiler angle="radian" autolimits="true" />
+  <compiler angle="radian" />
   <statistic meansize="1.73205" extent="3.4641" center="0 0 0" />
   <worldbody>
     <body>

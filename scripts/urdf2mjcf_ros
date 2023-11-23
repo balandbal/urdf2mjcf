@@ -42,8 +42,8 @@ if __name__ == "__main__":
     )
     urdf_includes: Optional[Iterable[Dict[str, str]]] = get_param("urdf_includes", None)
     xml_destination = get_param("xml_destination", "mujoco_xml")
-    default_ground: str = get_param("add_ground", "false")  # type: ignore
-    default_lighting: str = get_param("add_lighting", "false")  # type: ignore
+    default_ground: bool = get_param("add_ground", False)
+    default_lighting: bool = get_param("add_lighting", False)
 
     while not rospy.has_param(urdf_source["urdf"]) and not rospy.is_shutdown():
         rospy.logerr_once(f"Polling for URDF at{urdf_source['urdf']}...")
@@ -51,8 +51,8 @@ if __name__ == "__main__":
 
     result = full_pipeline(
         **to_converter_kwargs(urdf_source),
-        default_ground=True if default_ground.lower() == "true" else False,
-        default_lighting=True if default_lighting.lower() == "true" else False,
+        default_ground=default_ground,
+        default_lighting=default_lighting,
     )
 
     if urdf_includes is not None:

@@ -1,17 +1,15 @@
-<a name="2.0.1"></a>
+<a name="2.0.2"></a>
 
-## [2.0.1](https://github.com/balandbal/urdf2mjcf/compare/2.0.0...2.0.1) (2023-11-23)
+## [2.0.2](https://github.com/balandbal/urdf2mjcf/compare/2.0.1...2.0.2) (2023-11-23)
 
-### Bug Fixes
+### Style
 
-- **rosnode:** fix parsing ground and lighting flags from param. server ([7c4219f](https://github.com/balandbal/urdf2mjcf/commit/7c4219fde402f8774a7e53ddfbc749fc28e8249a))
+- apply format black ([4d0fa75](https://github.com/balandbal/urdf2mjcf/commit/4d0fa7526877ad263b199fb47e021e3ddadbd5ec))
 
-### Docs
+### Tests
 
-- update steps to generate the changelog ([e28857e](https://github.com/balandbal/urdf2mjcf/commit/e28857ed38b763f962c8a3cae9e2d018596f36de))
-- update package.xml ([aa46303](https://github.com/balandbal/urdf2mjcf/commit/aa463032e8cc3874191b88376a471c5982029889))
+- update tests for MuJoCo 2.3.6 ([58111c1](https://github.com/balandbal/urdf2mjcf/commit/58111c14129d3d8aeed73d0a8c69b8796a27093c))
 
-### Dependencies
+### Chore
 
-- rework handling mujoco dependency ([074125f](https://github.com/balandbal/urdf2mjcf/commit/074125ff868a3149bee6f7c5d9a3221a64e4f87e))
-- update mujoco dependency ([0a53f27](https://github.com/balandbal/urdf2mjcf/commit/0a53f2780c03655630a77178b0eb7d1b35e45a3d))
+- **test:** clean-up assertions ([f0a95dd](https://github.com/balandbal/urdf2mjcf/commit/f0a95ddab44ca6d5a29e9f104ae7c0d889c981ce))

@@ -16,6 +16,6 @@
 
   <depend>python3-rospkg</depend>
   <depend>python3-defusedxml</depend>
-  <depend>python3-mujoco</depend>
+  <depend version_lte="2.3.3">python3-mujoco</depend>
 
 </package>

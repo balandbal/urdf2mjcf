@@ -1,9 +1,8 @@
 <mujoco model="MuJoCo Model">
-  <compiler angle="radian" />
-  <size njmax="500" nconmax="100" />
-  <default />
+  <compiler angle="radian" autolimits="true" />
+  <statistic meansize="1.73205" extent="3.4641" center="0 0 0" />
   <worldbody>
-    <body pos="0 0 0">
+    <body>
       <geom size="1 1 1" type="box" rgba="0 1 0 0.5" />
     </body>
   </worldbody>

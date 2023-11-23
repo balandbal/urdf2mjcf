@@ -5,12 +5,12 @@
 ### Requirements
 
 ```shell
-pip install git-changelog
+pip install "git-changelog==2.1.0"
 ```
 
 ### Generating the changelog
 
 ```shell
 cd path/to/urdf2mjcf
-git-changelog -o CHANGELOG.md -s conventional -t path:docs/changelog_templates .
+git-changelog -c conventional -t angular -s "feat,refactor,fix,revert,docs,deps,style,build,test,ci,chore" -r . > CHANGELOG.md 
 ```

@@ -44,7 +44,7 @@ def test_add_mujoco_node_1():
     add_mujoco_node(urdf, None)
     output = tostring(urdf, encoding="unicode")
     control = '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
-    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
+    assert output == control
 
 
 def test_add_mujoco_node_2():
@@ -52,7 +52,7 @@ def test_add_mujoco_node_2():
     add_mujoco_node(urdf, _get_mjnode1())
     output = tostring(urdf, encoding="unicode")
     control = '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option><flag /></option><size /></mujoco></robot>'
-    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
+    assert output == control
 
 
 def test_add_mujoco_node_3():
@@ -60,7 +60,7 @@ def test_add_mujoco_node_3():
     add_mujoco_node(urdf, _get_mjnode2())
     output = tostring(urdf, encoding="unicode")
     control = '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
-    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
+    assert output == control
 
 
 def test_update_mujoco_node_1():
@@ -69,7 +69,7 @@ def test_update_mujoco_node_1():
     add_mujoco_node(urdf, _get_mjnode2())
     output = tostring(urdf, encoding="unicode")
     control = '<robot><mujoco><compiler strippath="false" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
-    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
+    assert output == control
 
 
 def test_update_mujoco_node_2():
@@ -78,13 +78,4 @@ def test_update_mujoco_node_2():
     add_mujoco_node(urdf, _get_mjnode1())
     output = tostring(urdf, encoding="unicode")
     control = '<robot><mujoco><compiler strippath="true" fusestatic="false" discardvisual="true"><lengthrange /></compiler><option timestep="0.001" cone="elliptic"><flag /></option><size /></mujoco></robot>'
-    assert output == control, f"\n output:\n  '{output}'\n control:\n  '{control}'"
-
-
-if __name__ == "__main__":
-
-    with open(_test_dir / "inputs" / "ros_uris.txt", "r") as input_file:
-        input_uris = [uri.rstrip() for uri in input_file]
-
-    for input_uri in input_uris:
-        print(abspath_from_ros_uri(input_uri))
+    assert output == control

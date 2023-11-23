@@ -1,5 +1,0 @@
-python3-mujoco:
-  ubuntu:
-    focal:
-      pip:
-        packages: mujoco

@@ -6,7 +6,6 @@ from defusedxml.ElementTree import fromstring
 
 
 def pass_through(input_model: Path, converter: Callable[[Element], Element]) -> str:
-
     with open(input_model, "r") as file:
         model_xml: Element = fromstring(file.read())
 

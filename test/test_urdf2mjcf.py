@@ -26,7 +26,6 @@ def _remove_assets(mjcf):
 
 
 def test_urdf2mjcf_mjnode():
-
     result_object = urdf_to_mjcf(_urdf(), mujoco_node=_mujoco_node())
     _remove_assets(result_object)
     result_string = tostring(result_object, encoding="unicode")
@@ -39,7 +38,6 @@ def test_urdf2mjcf_mjnode():
 
 
 def test_urdf2mjcf_sensored():
-
     result_object = urdf_to_mjcf(_urdf(), sensor_config=_sensor_config())
     _remove_assets(result_object)
     result_string = tostring(result_object, encoding="unicode")

@@ -10,7 +10,6 @@ from utils import pass_through as _pass_through
 
 
 def test_basic_mjcf2mjcf():
-
     input_model = _test_dir / "inputs" / "ip_model_1.xml"
     output_model = _test_dir / "outputs" / "op_model_1.xml"
 
@@ -23,7 +22,6 @@ def test_basic_mjcf2mjcf():
 
 
 def test_basic_urdf2mjcf():
-
     input_model = _test_dir / "inputs" / "ip_model_2.urdf"
     output_model = _test_dir / "outputs" / "op_model_2.xml"
 

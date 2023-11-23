@@ -110,7 +110,6 @@ def abspath_from_ros_uri(uri: str, rospack: RosPack = None) -> str:
 def resolve_ros_uris(urdf: Element, rospack: RosPack = None) -> None:
     """Resolve all collision mesh ROS package URIs to absolute paths"""
     for mesh_node in urdf.findall(".//collision/*/mesh[@filename]"):
-
         ros_uri = mesh_node.get("filename", None)
         assert (
             ros_uri is not None

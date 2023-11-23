@@ -1,6 +1,6 @@
-<!-- insertion marker -->
-<a name="Unreleased"></a>
-## Unreleased ([compare](https://github.com/balandbal/urdf2mjcf/compare/2.0.0...HEAD)) (2023-11-23)
+<a name="2.0.1"></a>
+
+## [2.0.1](https://github.com/balandbal/urdf2mjcf/compare/2.0.0...2.0.1) (2023-11-23)
 
 ### Bug Fixes
 
@@ -15,5 +15,3 @@
 
 - rework handling mujoco dependency ([074125f](https://github.com/balandbal/urdf2mjcf/commit/074125ff868a3149bee6f7c5d9a3221a64e4f87e))
 - update mujoco dependency ([0a53f27](https://github.com/balandbal/urdf2mjcf/commit/0a53f2780c03655630a77178b0eb7d1b35e45a3d))
-
-<!-- insertion marker -->

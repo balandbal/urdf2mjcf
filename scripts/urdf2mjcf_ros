@@ -46,7 +46,7 @@ if __name__ == "__main__":
     default_lighting: bool = get_param("add_lighting", False)
 
     while not rospy.has_param(urdf_source["urdf"]) and not rospy.is_shutdown():
-        rospy.logerr_once(f"Polling for URDF at{urdf_source['urdf']}...")
+        rospy.logerr_throttle_identical(5, f"Polling for URDF at{urdf_source['urdf']}...")
         sleep(0.1)
 
     result = full_pipeline(

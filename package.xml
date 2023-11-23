@@ -4,13 +4,13 @@
   <version>2.0.0</version>
   <description>The urdf2mjcf package</description>
 
-  <maintainer email="balazs.andras.balint@ipa.fraunhofer.de">Balázs Bálint</maintainer>
+  <maintainer email="balazs.andras.balint@ipa.fraunhofer.de">Balázs András Bálint</maintainer>
 
-  <license>BSD</license>
+  <license>BSD-3-Clause</license>
 
-  <!-- <url type="website">http://wiki.ros.org/urdf2mjcf</url> -->
+  <url type="repository">https://github.com/balandbal/urdf2mjcf.git</url>
 
-  <author email="balazs.andras.balint@ipa.fraunhofer.de">Balázs Bálint</author>
+  <author email="balazs.andras.balint@ipa.fraunhofer.de">Balázs András Bálint</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
